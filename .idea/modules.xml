@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BierBest-client.iml" filepath="$PROJECT_DIR$/.idea/modules/BierBest-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BierBest-client_main.iml" filepath="$PROJECT_DIR$/.idea/modules/BierBest-client_main.iml" group="BierBest-client" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BierBest-client_test.iml" filepath="$PROJECT_DIR$/.idea/modules/BierBest-client_test.iml" group="BierBest-client" />
+    </modules>
+  </component>
+</project>
