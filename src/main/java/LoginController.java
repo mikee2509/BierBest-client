@@ -21,5 +21,6 @@ public class LoginController {
         controller.setStage(root);
         root.setScene(homeScene);
         root.centerOnScreen();
+        //controller.searchBeers(null);
     }
 }
