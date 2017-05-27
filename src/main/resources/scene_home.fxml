@@ -38,7 +38,7 @@
         </MenuBar>
             <AnchorPane minHeight="60">
                <children>
-            <Button onAction="#searchBeers" id="button" layoutX="520.0" layoutY="10.0" mnemonicParsing="false" text="Button" />
+            <Button onAction="#searchBeers" id="button" layoutX="520.0" layoutY="10.0" mnemonicParsing="false" text="Search" />
             <TextField id="search_field" layoutX="10.0" layoutY="10.0" promptText="Search for beers" />
                </children>
             </AnchorPane>
@@ -48,14 +48,8 @@
   <center>
       <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
-            <VBox fx:id="search_results">
+            <VBox fx:id="searchResults">
                <children>
-                 <Region id="region_black" />
-                 <Region id="region_grey" />
-                 <Region id="region_black" />
-                 <Region id="region_grey" />
-                 <Region id="region_black" />
-                 <Region id="region_grey" />
                </children>
             </VBox>
          </content>

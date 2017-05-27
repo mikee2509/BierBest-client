@@ -65,7 +65,7 @@
 }
 
 #region_grey{
-    -fx-background-color: grey;
+    -fx-background-color: linear-gradient(to bottom, transparent, black);
     -fx-min-width: 200;
     -fx-min-height: 300;
 }

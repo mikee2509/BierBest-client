@@ -1,0 +1,25 @@
+#result_pane {
+    -fx-background-color: linear-gradient(to bottom, rgba(0,0,0,0.5), black);
+    -fx-background-radius: 10;
+}
+#result_pane:hover{
+    -fx-background-color: black;
+    -fx-background-radius: 10;
+}
+.label {
+    -fx-font-family: "Source Sans Pro";
+    -fx-text-fill: white;
+}
+
+#beer_name {
+    -fx-font-size: 40;
+}
+
+#style_content, #abv_label, #abv_content {
+    -fx-font-size: 20;
+}
+
+#style_content, #abv_content {
+    -fx-font-size: 20;
+    -fx-text-fill: lightgray;
+}
