@@ -39,6 +39,7 @@ public class SearchResultController {
 
     public void setBeerDescriptionText(String desc) {
         if(desc != null) {
+            desc = desc.replaceAll("\\r\\n|\\r|\\n", " ");
             beerDescription.setText(desc);
         } else {
             beerDescription.setText("No description provided");
