@@ -1,49 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.VBox?>
 
-<BorderPane id="pane" fx:id="rootBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" stylesheets="style_home.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
+
+<BorderPane id="pane" fx:id="homeBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" stylesheets="style_home.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
   <top>
-    <VBox prefHeight="50.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-      <children>
-        <MenuBar>
-          <menus>
-            <Menu mnemonicParsing="false" text="File">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Close" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Delete" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-              <items>
-                <MenuItem mnemonicParsing="false" text="About" />
-              </items>
-            </Menu>
-          </menus>
-        </MenuBar>
-            <AnchorPane minHeight="60">
-               <children>
-            <Button onAction="#searchBeers" id="button" layoutX="520.0" layoutY="10.0" mnemonicParsing="false" text="Search" />
-            <TextField fx:id="searchField" onAction="#searchBeers" id="search_field" layoutX="10.0" layoutY="10.0" promptText="Search for beers" />
-               </children>
-            </AnchorPane>
-      </children>
-    </VBox>
+    <AnchorPane minHeight="60">
+       <children>
+    <Button onAction="#searchBeers" id="button" layoutX="520.0" layoutY="10.0" mnemonicParsing="false" text="Search" />
+    <TextField fx:id="searchField" onAction="#searchBeers" id="search_field" layoutX="10.0" layoutY="10.0" promptText="Search for beers" />
+       </children>
+    </AnchorPane>
   </top>
   <center>
       <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">

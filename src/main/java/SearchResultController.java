@@ -1,7 +1,16 @@
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+
+import java.util.LinkedHashMap;
 
 public class SearchResultController {
     @FXML
@@ -15,29 +24,45 @@ public class SearchResultController {
     @FXML
     private ImageView beerIcon;
 
-    public void setBeerNameText(String text) {
-        beerName.setText(text);
+    private Stage root;
+    private BeerInfo beerInfo;
+    private HomeController rootController;
+    private Pane detailsPane;
+
+    public void setStage(Stage root) {
+        this.root = root;
     }
 
-    public void setBeerStyleText(String style) {
-        if(style != null) {
-            beerStyle.setText(style);
+    public void setRootController(HomeController rootController) {
+        this.rootController = rootController;
+    }
+
+    public void init(BeerInfo beer) {
+        beerInfo = beer;
+        LinkedHashMap<String, String> icons = beerInfo.getLabels();
+        String imgurl = icons == null ? null : icons.get("icon");
+        beerIcon.setImage(new Image(imgurl == null ? "img/placeholder_icon.png" : imgurl));
+
+        beerName.setText(beerInfo.getName());
+
+        LinkedHashMap<String, Object> style = beerInfo.getStyle();
+        String styleName = style == null ? null : (String) style.get("name");
+        if(styleName != null) {
+            beerStyle.setText(styleName);
         } else {
             beerStyle.setText("No style provided");
             beerStyle.setStyle("-fx-font-style: italic;");
         }
-    }
 
-    public void setBeerAbvText(double abv) {
+        double abv = beerInfo.getAbv();
         if(abv < 0) {
             beerAbv.setText("Unknown");
             beerAbv.setStyle("-fx-font-style: italic;");
         } else {
-            beerAbv.setText(String.valueOf(abv));
+            beerAbv.setText(String.valueOf(abv) + "%");
         }
-    }
 
-    public void setBeerDescriptionText(String desc) {
+        String desc = beerInfo.getDescription();
         if(desc != null) {
             desc = desc.replaceAll("\\r\\n|\\r|\\n", " ");
             beerDescription.setText(desc);
@@ -47,7 +72,34 @@ public class SearchResultController {
         }
     }
 
-    public void setBeerIconImage(Image icon) {
-        beerIcon.setImage(icon);
+    public void viewDetails(MouseEvent mouseEvent) throws Exception{
+        if (rootController.getOperationInProgress().compareAndSet(false, true)) {
+            Task<Void> task = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scene_details.fxml"));
+                    Pane pane = fxmlLoader.load();
+                    DetailsController controller = fxmlLoader.getController();
+                    controller.setStage(root);
+                    controller.setPrevScene(root.getScene());
+                    controller.passBeerProperties(beerInfo, beerName.getText(), beerStyle.getText(), beerAbv.getText(), beerDescription.getText());
+                    detailsPane = pane;
+                    return null;
+                }
+            };
+
+            task.setOnSucceeded(event -> {
+                root.setScene(new Scene(detailsPane));
+                rootController.getHomeBorderPane().setBottom(null);
+                rootController.getOperationInProgress().set(false);
+            });
+
+            ProgressBar progressBar = new ProgressBar(-1.0);
+            progressBar.prefWidthProperty().bind(rootController.getHomeBorderPane().widthProperty());
+            rootController.getHomeBorderPane().setBottom(progressBar);
+
+            Thread thread = new Thread(task);
+            thread.start();
+        }
     }
 }

@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -15,8 +14,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class HomeController {
@@ -27,81 +26,94 @@ public class HomeController {
     @FXML
     private TextField searchField;
     @FXML
-    private BorderPane rootBorderPane;
+    private BorderPane homeBorderPane;
 
     private APISearchResult apiResult;
-    public ArrayList<AnchorPane> resultPanes;
+    private LinkedList<AnchorPane> resultsPanes;
+    private LinkedList<SearchResultController> resultsControllers;
+    private AtomicBoolean operationInProgress;
 
     public HomeController() {
+        operationInProgress = new AtomicBoolean(false);
     }
 
     public void setStage(Stage root) {
         this.root = root;
     }
 
-    public void searchBeers(ActionEvent actionEvent) throws Exception {
-        resultPanes = new ArrayList<>();
-        searchResults.getChildren().clear();
+    public AtomicBoolean getOperationInProgress() {
+        return operationInProgress;
+    }
 
-        Task<Void> task = new Task<Void>() {
-            @Override protected Void call() throws Exception {
-                String query = searchField.getText();
-                ObjectMapper mapper = new ObjectMapper();
-                apiResult = mapper.readValue(getHTML("http://api.brewerydb.com/v2/" +
+    public BorderPane getHomeBorderPane() {
+        return homeBorderPane;
+    }
+
+    public void searchBeers(ActionEvent actionEvent) throws Exception {
+        if (operationInProgress.compareAndSet(false, true)) {
+            resultsPanes = new LinkedList<>();
+            resultsControllers = new LinkedList<>();
+            searchResults.getChildren().clear();
+
+            Task<Void> task = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    String query = searchField.getText();
+                    ObjectMapper mapper = new ObjectMapper();
+                    apiResult = mapper.readValue(getHTML("http://api.brewerydb.com/v2/" +
                         "search?type=beer&key=a19fcef43297aa840f8c63a0e1fb1023&q=" + URLEncoder.encode(query, "UTF-8")),
                         APISearchResult.class);
 
-//                String uri = "C:\\Users\\Michał\\IdeaProjects\\BierBest-client\\src\\main\\resources\\query_ale.txt";
-//                apiResult = mapper.readValue(new File(uri), APISearchResult.class);
+//                    String uri = "C:\\Users\\Michał\\IdeaProjects\\BierBest-client\\src\\main\\resources\\query_zywiec.txt";
+//                    apiResult = mapper.readValue(new File(uri), APISearchResult.class);
 
-                System.out.println(apiResult);
+                    //TODO: border around the highlighted object
+                    //TODO: handle the widths
+                    System.out.println(apiResult);
 
-                try {
-                    int numOfResults = apiResult.getData().size();
-                    int current = 1;
-                    for(BeerInfo beer : apiResult.getData()){
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fragment_search_result.fxml"));
-                        AnchorPane pane = fxmlLoader.load();
-                        SearchResultController controller = fxmlLoader.getController();
-
-                        LinkedHashMap<String, String> icons = beer.getLabels();
-                        String imgurl = icons == null ? null : icons.get("icon");
-                        controller.setBeerIconImage(new Image(imgurl == null ? "img/placeholder_icon.png" : imgurl));
-                        controller.setBeerNameText(beer.getName());
-                        LinkedHashMap<String, Object> style = beer.getStyle();
-                        String styleName = style == null ? null : (String) style.get("name");
-                        controller.setBeerStyleText(styleName);
-                        controller.setBeerAbvText(beer.getAbv());
-                        controller.setBeerDescriptionText(beer.getDescription());
-
-                        resultPanes.add(pane);
-                        updateProgress(current, numOfResults);
-                        ++current;
+                    try {
+                        int numOfResults = apiResult.getData().size();
+                        int current = 1;
+                        for (BeerInfo beer : apiResult.getData()) {
+                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fragment_search_result.fxml"));
+                            AnchorPane pane = fxmlLoader.load();
+                            SearchResultController controller = fxmlLoader.getController();
+                            controller.setStage(root);
+                            controller.init(beer);
+                            resultsPanes.add(pane);
+                            resultsControllers.add(controller);
+                            updateProgress(current, numOfResults);
+                            ++current;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Exception when processing search results: " + e);
                     }
-                } catch (Exception e) {
-                    System.out.println("Exception when processing search results: " + e);
+                    return null;
                 }
-                return null;
-            }
-        };
+            };
 
-        task.setOnSucceeded(event -> {
-            for (AnchorPane pane: resultPanes) {
-                searchResults.getChildren().add(pane);
-                Region margin = new Region();
-                margin.setMinHeight(10);
-                searchResults.getChildren().add(margin);
-            }
-            rootBorderPane.setBottom(null);
-        });
+            task.setOnSucceeded(event -> {
+                for (AnchorPane pane : resultsPanes) {
+                    searchResults.getChildren().add(pane);
+                    Region margin = new Region();
+                    margin.setMinHeight(10);
+                    searchResults.getChildren().add(margin);
+                }
+                for (SearchResultController controller : resultsControllers) {
+                    controller.setRootController(this);
+                }
+                homeBorderPane.setBottom(null);
+                operationInProgress.set(false);
+            });
 
-        ProgressBar progressBar = new ProgressBar(-1.0);
-        progressBar.prefWidthProperty().bind(rootBorderPane.widthProperty());
-        progressBar.progressProperty().bind(task.progressProperty());
-        rootBorderPane.setBottom(progressBar);
+            ProgressBar progressBar = new ProgressBar(-1.0);
+            progressBar.prefWidthProperty().bind(homeBorderPane.widthProperty());
+            progressBar.progressProperty().bind(task.progressProperty());
+            homeBorderPane.setBottom(progressBar);
 
-        Thread thread = new Thread(task);
-        thread.start();
+            Thread thread = new Thread(task);
+            thread.start();
+        }
     }
 
     public static String getHTML(String urlToRead) throws Exception {

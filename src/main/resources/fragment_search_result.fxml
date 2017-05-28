@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="result_pane" prefHeight="100.0" prefWidth="750.0" stylesheets="style_search_result.css"
+<AnchorPane onMouseClicked="#viewDetails" id="result_pane" prefHeight="100.0" prefWidth="750.0" stylesheets="style_beer_properties.css"
             xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="SearchResultController">
    <children>
@@ -42,11 +39,11 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                         <Label fx:id="beerStyle" id="style_content" text="Lorem Ipsum Dolor Sit Amet" />
+                         <Label fx:id="beerStyle" id="property_value" text="Lorem Ipsum Dolor Sit Amet" />
                          <HBox GridPane.columnIndex="1">
                             <children>
-                                <Label id="abv_label" text="ABV: " />
-                                <Label fx:id="beerAbv" id="abv_content" text="5.6" />
+                                <Label id="property_label" text="ABV: " />
+                                <Label fx:id="beerAbv" id="property_value" text="5.6" />
                             </children>
                          </HBox>
                      </children>

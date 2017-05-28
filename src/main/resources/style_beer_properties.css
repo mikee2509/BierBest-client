@@ -6,6 +6,7 @@
     -fx-background-color: black;
     -fx-background-radius: 10;
 }
+
 .label {
     -fx-font-family: "Source Sans Pro";
     -fx-text-fill: white;
@@ -15,11 +16,24 @@
     -fx-font-size: 40;
 }
 
-#style_content, #abv_label, #abv_content {
+#property_label, #property_value {
     -fx-font-size: 20;
 }
 
-#style_content, #abv_content {
-    -fx-font-size: 20;
+#property_value {
     -fx-text-fill: lightgray;
 }
+
+#beer_description {
+    -fx-fill: lightgray;
+    -fx-font: 20 "Source Sans Pro";
+}
+
+#back_button {
+    -fx-image: url("img/back_arrow.png");
+}
+
+#logout_label {
+    -fx-font-size: 25;
+}
+
