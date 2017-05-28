@@ -3,10 +3,13 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -51,24 +54,35 @@ public class HomeController {
 
     public void searchBeers(ActionEvent actionEvent) throws Exception {
         if (operationInProgress.compareAndSet(false, true)) {
+            final String query = searchField.getText();
+            if(StringUtils.isBlank(query)) {
+
+                operationInProgress.set(false);
+                return;
+            }
             resultsPanes = new LinkedList<>();
             resultsControllers = new LinkedList<>();
             searchResults.getChildren().clear();
 
-            Task<Void> task = new Task<Void>() {
+
+            Task<Boolean> task = new Task<Boolean>() {
                 @Override
-                protected Void call() throws Exception {
-                    String query = searchField.getText();
+                protected Boolean call() throws Exception {
+                    String q = query;
+                    q = StringUtils.stripAccents(q);
                     ObjectMapper mapper = new ObjectMapper();
                     apiResult = mapper.readValue(getHTML("http://api.brewerydb.com/v2/" +
-                        "search?type=beer&key=a19fcef43297aa840f8c63a0e1fb1023&q=" + URLEncoder.encode(query, "UTF-8")),
+                        "search?type=beer&key=a19fcef43297aa840f8c63a0e1fb1023&q=" + URLEncoder.encode(q, "UTF-8")),
                         APISearchResult.class);
 
 //                    String uri = "C:\\Users\\Michał\\IdeaProjects\\BierBest-client\\src\\main\\resources\\query_zywiec.txt";
 //                    apiResult = mapper.readValue(new File(uri), APISearchResult.class);
 
-                    //TODO: border around the highlighted object
+                    //TODO: border around the hovered object
                     //TODO: handle the widths
+                    if(apiResult.getTotalResults() == 0) {
+                        return false;
+                    }
                     System.out.println(apiResult);
 
                     try {
@@ -88,19 +102,27 @@ public class HomeController {
                     } catch (Exception e) {
                         System.out.println("Exception when processing search results: " + e);
                     }
-                    return null;
+                    return true;
                 }
             };
 
             task.setOnSucceeded(event -> {
-                for (AnchorPane pane : resultsPanes) {
-                    searchResults.getChildren().add(pane);
-                    Region margin = new Region();
-                    margin.setMinHeight(10);
-                    searchResults.getChildren().add(margin);
-                }
-                for (SearchResultController controller : resultsControllers) {
-                    controller.setRootController(this);
+                if(task.getValue()) {
+                    for (AnchorPane pane : resultsPanes) {
+                        searchResults.getChildren().add(pane);
+                        Region margin = new Region();
+                        margin.setMinHeight(10);
+                        searchResults.getChildren().add(margin);
+                    }
+                    for (SearchResultController controller : resultsControllers) {
+                        controller.setRootController(this);
+                    }
+                } else {
+                    Label label = new Label("No results found for \"" + query + "\"");
+                    label.setStyle("-fx-font-style: italic; -fx-font-size: 20; " +
+                            "-fx-font-family: \"Source Sans Pro\"; -fx-text-fill: white;");
+                    label.setPadding(new Insets(15, 15, 15, 15));
+                    searchResults.getChildren().add(label);
                 }
                 homeBorderPane.setBottom(null);
                 operationInProgress.set(false);
