@@ -19,35 +19,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" stylesheets="style_home.css, style_beer_properties.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DetailsController">
-   <children>
-      <VBox prefHeight="750.0" prefWidth="1200.0">
+<BorderPane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" stylesheets="style_home.css, style_beer_properties.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DetailsController">
+   <center>
+      <VBox prefWidth="1200.0">
          <children>
-            <BorderPane>
-               <left>
-                  <ImageView id="back_button" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#goBackToResults" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets left="10.0" top="10.0" />
-                     </BorderPane.margin></ImageView>
-               </left>
-               <right>
-                  <Label id="logout_label" text="Logout" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets right="15.0" />
-                     </BorderPane.margin></Label>
-               </right>
-            </BorderPane>
-            <HBox maxWidth="1150.0" prefHeight="1150.0">
+            <HBox maxWidth="1150.0">
                <children>
                   <ImageView fx:id="beerImage" fitHeight="350.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </ImageView>
-                  <Region prefHeight="650.0" prefWidth="54.0" />
+                  <Region prefWidth="54.0" />
                   <VBox maxWidth="800.0">
                      <children>
-                        <Label fx:id="beerName" id="beer_name" maxWidth="800.0" text="Session I.P.A." />
+                        <Label id="beer_name" fx:id="beerName" maxWidth="800.0" text="Session I.P.A." />
                         <GridPane maxWidth="800.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="553.0" minWidth="10.0" prefWidth="531.0" />
@@ -58,27 +44,27 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label fx:id="beerStyle" id="property_value" text="American-Style India Pale Ale" />
+                              <Label id="property_value" fx:id="beerStyle" text="American-Style India Pale Ale" />
                               <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                                  <children>
                                     <Label id="property_label" text="ABV: " />
-                                    <Label fx:id="beerAbv" id="property_value" text="5.0" />
+                                    <Label id="property_value" fx:id="beerAbv" text="5.0" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <children>
                                     <Label id="property_label" text="IBU: " />
-                                    <Label fx:id="beerIbu" id="property_value" text="30" />
+                                    <Label id="property_value" fx:id="beerIbu" text="30" />
                                  </children>
                               </HBox>
-                              <Label fx:id="beerAvailability" id="property_value" text="Available at the same time of year, every year." GridPane.rowIndex="1" />
+                              <Label id="property_value" fx:id="beerAvailability" text="Available at the same time of year, every year." GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                         <Label id="property_label" text="Description:">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin></Label>
-                        <Text fx:id="beerDescription" id="beer_description" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lobortis id lacus vel tincidunt. Donec euismod, ante at molestie ornare, erat nulla commodo ipsum, eu vestibulum urna quam in dolor. Ut sit amet commodo felis. Nulla facilisi. Vestibulum ultricies elit odio, et dignissim elit rutrum interdum. Suspendisse id justo vestibulum, pretium metus a, aliquet sem. Sed quam nunc, consequat sit amet sodales id, blandit id felis. Mauris sagittis volutpat eros, vitae porttitor nibh dignissim ac. Cras ultrices tortor nec nibh maximus consequat. Nullam quam enim, iaculis faucibus bibendum in, finibus quis urna." wrappingWidth="700.0" />
+                        <Text id="beer_description" fx:id="beerDescription" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lobortis id lacus vel tincidunt. Donec euismod, ante at molestie ornare, erat nulla commodo ipsum, eu vestibulum urna quam in dolor. Ut sit amet commodo felis. Nulla facilisi. Vestibulum ultricies elit odio, et dignissim elit rutrum interdum. Suspendisse id justo vestibulum, pretium metus a, aliquet sem. Sed quam nunc, consequat sit amet sodales id, blandit id felis. Mauris sagittis volutpat eros, vitae porttitor nibh dignissim ac. Cras ultrices tortor nec nibh maximus consequat. Nullam quam enim, iaculis faucibus bibendum in, finibus quis urna." wrappingWidth="700.0" />
                      </children>
                   </VBox>
                </children>
@@ -88,5 +74,30 @@
             </HBox>
          </children>
       </VBox>
-   </children>
-</AnchorPane>
+   </center>
+   <bottom>
+      <Button id="button" mnemonicParsing="false" onAction="#askForPrice" text="Ask for price" BorderPane.alignment="TOP_RIGHT">
+         <BorderPane.margin>
+            <Insets bottom="100.0" right="100.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
+   <top>
+      <BorderPane BorderPane.alignment="CENTER">
+         <left>
+            <ImageView id="back_button" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#goBackToResults" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="25.0" top="25.0" />
+               </BorderPane.margin>
+            </ImageView>
+         </left>
+         <right>
+            <Label fx:id="userName" id="username_label" text="Username" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets right="25.0" />
+               </BorderPane.margin>
+            </Label>
+         </right>
+      </BorderPane>
+   </top>
+</BorderPane>

@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,6 +30,8 @@ public class HomeController {
     @FXML
     private TextField searchField;
     @FXML
+    public Label username;
+    @FXML
     private BorderPane homeBorderPane;
 
     private APISearchResult apiResult;
@@ -38,6 +41,10 @@ public class HomeController {
 
     public HomeController() {
         operationInProgress = new AtomicBoolean(false);
+        Platform.runLater(() -> {
+            searchField.requestFocus();
+            username.setText(LoginController.currentUser.getUserName());
+        });
     }
 
     public void setStage(Stage root) {
@@ -78,12 +85,10 @@ public class HomeController {
 //                    String uri = "C:\\Users\\Michał\\IdeaProjects\\BierBest-client\\src\\main\\resources\\query_zywiec.txt";
 //                    apiResult = mapper.readValue(new File(uri), APISearchResult.class);
 
-                    //TODO: border around the hovered object
-                    //TODO: handle the widths
                     if(apiResult.getTotalResults() == 0) {
                         return false;
                     }
-                    System.out.println(apiResult);
+//                    System.out.println(apiResult);
 
                     try {
                         int numOfResults = apiResult.getData().size();

@@ -1,13 +1,29 @@
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginController {
+    @FXML
+    public TextField username;
+
     private Stage root;
+    public static User currentUser;
+
 
     public LoginController() {
+        currentUser = new User();
+        Platform.runLater(() -> {
+            username.requestFocus();
+        });
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
     }
 
     public void setStage(Stage root){
@@ -15,9 +31,9 @@ public class LoginController {
     }
 
     public void browseBeers(ActionEvent actionEvent) throws Exception {
+        currentUser.setUserName(username.getText());
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scene_home.fxml"));
         Scene homeScene = new Scene(fxmlLoader.load());
-        //homeScene.getStylesheets().add(getClass().getResource("style_home.css").toExternalForm());
         HomeController controller = fxmlLoader.getController();
         controller.setStage(root);
         root.setScene(homeScene);

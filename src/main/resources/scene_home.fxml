@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
-
-<BorderPane id="pane" fx:id="homeBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" stylesheets="style_home.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
-  <top>
-    <AnchorPane minHeight="60">
-       <children>
-    <Button onAction="#searchBeers" id="button" layoutX="520.0" layoutY="10.0" mnemonicParsing="false" text="Search" />
-    <TextField fx:id="searchField" onAction="#searchBeers" id="search_field" layoutX="10.0" layoutY="10.0" promptText="Search for beers" />
-       </children>
-    </AnchorPane>
-  </top>
+<BorderPane id="pane" fx:id="homeBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" stylesheets="style_home.css, style_beer_properties.css"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
   <center>
       <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
@@ -22,4 +26,40 @@
          </content>
       </ScrollPane>
    </center>
+   <left>
+      <Region prefHeight="690.0" prefWidth="10.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+    <AnchorPane minHeight="60" BorderPane.alignment="CENTER" />
+   </right>
+   <top>
+      <BorderPane BorderPane.alignment="CENTER">
+         <left>
+            <HBox BorderPane.alignment="CENTER">
+               <children>
+          <TextField id="search_field" fx:id="searchField" onAction="#searchBeers" promptText="Search for beers">
+                     <HBox.margin>
+                        <Insets left="35.0" top="25.0" />
+                     </HBox.margin>
+                  </TextField>
+          <Button id="button" mnemonicParsing="false" onAction="#searchBeers" text="Search">
+                     <HBox.margin>
+                        <Insets left="10.0" top="25.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" />
+               </BorderPane.margin>
+            </HBox>
+         </left>
+         <right>
+            <Label fx:id="username" id="username_label" text="Username" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets right="25.0" />
+               </BorderPane.margin>
+            </Label>
+         </right>
+      </BorderPane>
+   </top>
 </BorderPane>

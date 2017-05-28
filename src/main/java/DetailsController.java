@@ -1,16 +1,20 @@
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.LinkedHashMap;
 
 public class DetailsController {
+    @FXML
+    public Label userName;
     @FXML
     private ImageView beerImage;
     @FXML
@@ -44,6 +48,7 @@ public class DetailsController {
         beerStyle.setText(style);
         beerAbv.setText(abv);
         beerDescription.setText(description);
+        userName.setText(LoginController.currentUser.getUserName());
 
         int ibu = beerInfo.getIbu();
         if(ibu < 0) {
@@ -81,4 +86,17 @@ public class DetailsController {
     }
 
 
+    public void askForPrice(ActionEvent actionEvent) throws Exception {
+        Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(root.getScene().getWindow());
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scene_order.fxml"));
+        stage.setScene(new Scene(fxmlLoader.load()));
+        OrderController controller = fxmlLoader.getController();
+        controller.setStage(stage);
+        controller.init(beerName.getText());
+        stage.setTitle("Ask for price");
+        stage.show();
+    }
 }
