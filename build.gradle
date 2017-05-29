@@ -1,3 +1,14 @@
+buildscript {
+    dependencies {
+        classpath group: 'de.dynamicfiles.projects.gradle.plugins', name: 'javafx-gradle-plugin', version: '8.8.2'
+    }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+
+    }
+}
+
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
@@ -8,10 +19,18 @@ repositories {
     mavenCentral()
 }
 
+apply plugin: 'javafx-gradle-plugin'
+
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
-    //compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.10.Final'
 
+}
+
+jfx {
+    mainClass = 'Main'
+    vendor = 'Michal'
+    jfxMainAppJarName = 'BierBest.jar'
+    jfxAppOutputDir = "build/jfx/app"
 }
