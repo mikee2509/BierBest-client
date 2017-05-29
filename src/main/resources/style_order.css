@@ -1,13 +1,13 @@
-#order_pane{
+#order_pane {
     -fx-background-color: #101010;
     -fx-background-color: linear-gradient(to bottom, #1c1c1c, #101010);
 }
 
-.text-area .content{
+.text-area .content {
     -fx-background-color: #eeeeee;
 }
 
-.text-area   {
+.text-area {
     -fx-text-fill: black;
     -fx-font-size: 18px;
     -fx-wrap-text: true;
@@ -45,6 +45,7 @@
     -fx-font-size: 18px;
     -fx-padding: 8 20 8 20;
 }
+
 #negative_button:hover {
     -fx-background-color: #090a0c,
     linear-gradient(#494b30 0%, #dbd69b 20%, #191d22 100%),

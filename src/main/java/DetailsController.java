@@ -50,8 +50,8 @@ public class DetailsController {
         beerDescription.setText(description);
         userName.setText(LoginController.currentUser.getUserName());
 
-        int ibu = beerInfo.getIbu();
-        if(ibu < 0) {
+        double ibu = beerInfo.getIbu();
+        if (ibu < 0) {
             beerIbu.setText("Unknown");
             beerIbu.setStyle("-fx-font-style: italic;");
         } else {
@@ -59,7 +59,7 @@ public class DetailsController {
         }
 
         String desc = beerInfo.getDescription();
-        if(desc != null) {
+        if (desc != null) {
             beerDescription.setText(desc);
         } else {
             beerDescription.setText("No description provided");
@@ -72,7 +72,7 @@ public class DetailsController {
 
         LinkedHashMap<String, String> availability = beerInfo.getAvailable();
         String avail = availability == null ? null : availability.get("description");
-        if(avail != null) {
+        if (avail != null) {
             beerAvailability.setText(avail);
         } else {
             beerAvailability.setText("Unknown availability");
@@ -95,7 +95,7 @@ public class DetailsController {
         stage.setScene(new Scene(fxmlLoader.load()));
         OrderController controller = fxmlLoader.getController();
         controller.setStage(stage);
-        controller.init(beerName.getText());
+        controller.init(beerName.getText(), beerInfo.getId());
         stage.setTitle("Ask for price");
         stage.show();
     }

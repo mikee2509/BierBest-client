@@ -47,7 +47,7 @@ public class SearchResultController {
 
         LinkedHashMap<String, Object> style = beerInfo.getStyle();
         String styleName = style == null ? null : (String) style.get("name");
-        if(styleName != null) {
+        if (styleName != null) {
             beerStyle.setText(styleName);
         } else {
             beerStyle.setText("No style provided");
@@ -55,7 +55,7 @@ public class SearchResultController {
         }
 
         double abv = beerInfo.getAbv();
-        if(abv < 0) {
+        if (abv < 0) {
             beerAbv.setText("Unknown");
             beerAbv.setStyle("-fx-font-style: italic;");
         } else {
@@ -63,7 +63,7 @@ public class SearchResultController {
         }
 
         String desc = beerInfo.getDescription();
-        if(desc != null) {
+        if (desc != null) {
             desc = desc.replaceAll("\\r\\n|\\r|\\n", " ");
             beerDescription.setText(desc);
         } else {
@@ -72,7 +72,7 @@ public class SearchResultController {
         }
     }
 
-    public void viewDetails(MouseEvent mouseEvent) throws Exception{
+    public void viewDetails(MouseEvent mouseEvent) throws Exception {
         if (rootController.getOperationInProgress().compareAndSet(false, true)) {
             Task<Void> task = new Task<Void>() {
                 @Override

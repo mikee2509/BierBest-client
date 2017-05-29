@@ -18,6 +18,5 @@ public class Main extends Application {
         primaryStage.setScene(loginScene);
         primaryStage.setResizable(false);
         primaryStage.show();
-        //controller.browseBeers(null);
     }
 }

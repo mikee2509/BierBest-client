@@ -1,11 +1,12 @@
 #result_pane {
-    -fx-background-color: linear-gradient(to bottom, rgba(0,0,0,0.5), black);
+    -fx-background-color: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), black);
     -fx-background-radius: 10;
     -fx-border-color: transparent;
     -fx-border-width: 1;
     -fx-border-radius: 10;
 }
-#result_pane:hover{
+
+#result_pane:hover {
     -fx-background-color: black;
     -fx-background-radius: 10;
     -fx-border-color: lightgray;

@@ -1,77 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<BorderPane id="order_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="600.0" stylesheets="style_order.css, style_home.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OrderController">
-   <center>
-      <VBox alignment="CENTER" spacing="5.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox>
-               <children>
-                  <Label id="message_label" text="To: " />
-                  <Label id="message_value" text="BierBest Company" />
-               </children>
-            </HBox>
-            <HBox>
-               <children>
-                  <Label id="message_label" text="Subject: " />
-                  <Label fx:id="messageSubject" id="message_value" text="Lodgepole I.P.A. - price" />
-               </children>
-            </HBox>
-            <HBox>
-               <children>
-                  <Label id="message_label" text="Quantity: ">
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin></Label>
-               </children>
-            </HBox>
-            <HBox>
-               <children>
-                  <TextField fx:id="quantity" id="text_field" prefHeight="31.0" prefWidth="77.0">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox>
-               <children>
-                  <Label id="message_label" text="Message (optional):">
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin></Label>
-               </children>
-            </HBox>
-            <TextArea prefHeight="200.0" prefWidth="200.0">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </TextArea>
-         </children>
-         <BorderPane.margin>
-            <Insets left="30.0" right="30.0" />
-         </BorderPane.margin>
-      </VBox>
-   </center>
-   <bottom>
-      <HBox alignment="TOP_CENTER" spacing="20.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button onAction="#sendMessage" id="button" alignment="CENTER" mnemonicParsing="false" text=" Send " />
-            <Button onAction="#discardMessage" id="negative_button" mnemonicParsing="false" text="Discard">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </Button>
-         </children>
-         <BorderPane.margin>
-            <Insets bottom="20.0" />
-         </BorderPane.margin>
-      </HBox>
-   </bottom>
+<BorderPane fx:id="orderPane" id="order_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="530.0" prefWidth="600.0" stylesheets="style_order.css, style_home.css"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OrderController">
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="5.0" BorderPane.alignment="TOP_CENTER">
+            <children>
+                <HBox>
+                    <children>
+                        <Label id="message_label" text="To: "/>
+                        <Label id="message_value" text="BierBest Company"/>
+                    </children>
+                </HBox>
+                <HBox>
+                    <children>
+                        <Label id="message_label" text="Subject: "/>
+                        <Label id="message_value" fx:id="messageSubject" text="Lodgepole I.P.A. - price"/>
+                    </children>
+                </HBox>
+                <HBox>
+                    <children>
+                        <Label id="message_label" text="Quantity: ">
+                            <HBox.margin>
+                                <Insets top="5.0"/>
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox>
+                    <children>
+                        <TextField id="text_field" fx:id="quantity" prefHeight="31.0" prefWidth="77.0">
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox>
+                    <children>
+                        <Label id="message_label" text="Message (optional):">
+                            <HBox.margin>
+                                <Insets top="5.0"/>
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                </HBox>
+                <TextArea fx:id="message" prefHeight="200.0" prefWidth="200.0">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                </TextArea>
+                <HBox alignment="TOP_CENTER" spacing="20.0">
+                    <children>
+                        <Button id="button" alignment="CENTER" mnemonicParsing="false" onAction="#sendMessage"
+                                text=" Send "/>
+                        <Button id="negative_button" mnemonicParsing="false" onAction="#discardMessage" text="Discard">
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="20.0"/>
+                    </VBox.margin>
+                </HBox>
+            </children>
+            <BorderPane.margin>
+                <Insets left="30.0" right="30.0" top="25.0"/>
+            </BorderPane.margin>
+        </VBox>
+    </center>
 </BorderPane>

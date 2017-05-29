@@ -1,103 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
-
-<BorderPane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" stylesheets="style_home.css, style_beer_properties.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DetailsController">
-   <center>
-      <VBox prefWidth="1200.0">
-         <children>
-            <HBox maxWidth="1150.0">
-               <children>
-                  <ImageView fx:id="beerImage" fitHeight="350.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </ImageView>
-                  <Region prefWidth="54.0" />
-                  <VBox maxWidth="800.0">
-                     <children>
-                        <Label id="beer_name" fx:id="beerName" maxWidth="800.0" text="Session I.P.A." />
-                        <GridPane maxWidth="800.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="553.0" minWidth="10.0" prefWidth="531.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="10.0" prefWidth="144.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Label id="property_value" fx:id="beerStyle" text="American-Style India Pale Ale" />
-                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                 <children>
-                                    <Label id="property_label" text="ABV: " />
-                                    <Label id="property_value" fx:id="beerAbv" text="5.0" />
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                 <children>
-                                    <Label id="property_label" text="IBU: " />
-                                    <Label id="property_value" fx:id="beerIbu" text="30" />
-                                 </children>
-                              </HBox>
-                              <Label id="property_value" fx:id="beerAvailability" text="Available at the same time of year, every year." GridPane.rowIndex="1" />
-                           </children>
-                        </GridPane>
-                        <Label id="property_label" text="Description:">
-                           <VBox.margin>
-                              <Insets top="15.0" />
-                           </VBox.margin></Label>
-                        <Text id="beer_description" fx:id="beerDescription" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lobortis id lacus vel tincidunt. Donec euismod, ante at molestie ornare, erat nulla commodo ipsum, eu vestibulum urna quam in dolor. Ut sit amet commodo felis. Nulla facilisi. Vestibulum ultricies elit odio, et dignissim elit rutrum interdum. Suspendisse id justo vestibulum, pretium metus a, aliquet sem. Sed quam nunc, consequat sit amet sodales id, blandit id felis. Mauris sagittis volutpat eros, vitae porttitor nibh dignissim ac. Cras ultrices tortor nec nibh maximus consequat. Nullam quam enim, iaculis faucibus bibendum in, finibus quis urna." wrappingWidth="700.0" />
-                     </children>
-                  </VBox>
-               </children>
-               <VBox.margin>
-                  <Insets left="50.0" top="50.0" />
-               </VBox.margin>
-            </HBox>
-         </children>
-      </VBox>
-   </center>
-   <bottom>
-      <Button id="button" mnemonicParsing="false" onAction="#askForPrice" text="Ask for price" BorderPane.alignment="TOP_RIGHT">
-         <BorderPane.margin>
-            <Insets bottom="100.0" right="100.0" />
-         </BorderPane.margin>
-      </Button>
-   </bottom>
-   <top>
-      <BorderPane BorderPane.alignment="CENTER">
-         <left>
-            <ImageView id="back_button" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#goBackToResults" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets left="25.0" top="25.0" />
-               </BorderPane.margin>
-            </ImageView>
-         </left>
-         <right>
-            <Label fx:id="userName" id="username_label" text="Username" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets right="25.0" />
-               </BorderPane.margin>
-            </Label>
-         </right>
-      </BorderPane>
-   </top>
+<BorderPane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="750.0" prefWidth="1200.0" stylesheets="style_home.css, style_beer_properties.css"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DetailsController">
+    <center>
+        <VBox prefWidth="1200.0">
+            <children>
+                <HBox maxWidth="1150.0">
+                    <children>
+                        <ImageView fx:id="beerImage" fitHeight="350.0" fitWidth="350.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
+                        </ImageView>
+                        <Region prefWidth="54.0"/>
+                        <VBox maxWidth="800.0">
+                            <children>
+                                <Label id="beer_name" fx:id="beerName" maxWidth="800.0" text="Session I.P.A."/>
+                                <GridPane maxWidth="800.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="553.0" minWidth="10.0"
+                                                           prefWidth="531.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="10.0"
+                                                           prefWidth="144.0"/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                    </rowConstraints>
+                                    <children>
+                                        <Label id="property_value" fx:id="beerStyle"
+                                               text="American-Style India Pale Ale"/>
+                                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                            <children>
+                                                <Label id="property_label" text="ABV: "/>
+                                                <Label id="property_value" fx:id="beerAbv" text="5.0"/>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1"
+                                              GridPane.rowIndex="1">
+                                            <children>
+                                                <Label id="property_label" text="IBU: "/>
+                                                <Label id="property_value" fx:id="beerIbu" text="30"/>
+                                            </children>
+                                        </HBox>
+                                        <Label id="property_value" fx:id="beerAvailability"
+                                               text="Available at the same time of year, every year."
+                                               GridPane.rowIndex="1"/>
+                                    </children>
+                                </GridPane>
+                                <Label id="property_label" text="Description:">
+                                    <VBox.margin>
+                                        <Insets top="15.0"/>
+                                    </VBox.margin>
+                                </Label>
+                                <Text id="beer_description" fx:id="beerDescription" strokeType="OUTSIDE"
+                                      strokeWidth="0.0"
+                                      text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lobortis id lacus vel tincidunt. Donec euismod, ante at molestie ornare, erat nulla commodo ipsum, eu vestibulum urna quam in dolor. Ut sit amet commodo felis. Nulla facilisi. Vestibulum ultricies elit odio, et dignissim elit rutrum interdum. Suspendisse id justo vestibulum, pretium metus a, aliquet sem. Sed quam nunc, consequat sit amet sodales id, blandit id felis. Mauris sagittis volutpat eros, vitae porttitor nibh dignissim ac. Cras ultrices tortor nec nibh maximus consequat. Nullam quam enim, iaculis faucibus bibendum in, finibus quis urna."
+                                      wrappingWidth="700.0"/>
+                            </children>
+                        </VBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="50.0" top="50.0"/>
+                    </VBox.margin>
+                </HBox>
+            </children>
+        </VBox>
+    </center>
+    <bottom>
+        <Button id="button" mnemonicParsing="false" onAction="#askForPrice" text="Ask for price"
+                BorderPane.alignment="TOP_RIGHT">
+            <BorderPane.margin>
+                <Insets bottom="100.0" right="100.0"/>
+            </BorderPane.margin>
+        </Button>
+    </bottom>
+    <top>
+        <BorderPane BorderPane.alignment="CENTER">
+            <left>
+                <ImageView id="back_button" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#goBackToResults"
+                           pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                    <BorderPane.margin>
+                        <Insets left="25.0" top="25.0"/>
+                    </BorderPane.margin>
+                </ImageView>
+            </left>
+            <right>
+                <Label fx:id="userName" id="username_label" text="Username" BorderPane.alignment="CENTER">
+                    <BorderPane.margin>
+                        <Insets right="25.0"/>
+                    </BorderPane.margin>
+                </Label>
+            </right>
+        </BorderPane>
+    </top>
 </BorderPane>

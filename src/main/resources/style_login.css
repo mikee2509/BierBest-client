@@ -1,4 +1,4 @@
-#login_pane{
+#login_pane {
     -fx-background-image: url("img/background_login.jpg");
     -fx-background-repeat: stretch;
     -fx-background-position: center center;
@@ -17,6 +17,7 @@
     -fx-font-size: 30px;
     -fx-padding: 8 20 8 20;
 }
+
 #login_button:hover {
     -fx-background-color: #090a0c,
     linear-gradient(#494b30 0%, #dbd69b 20%, #191d22 100%),

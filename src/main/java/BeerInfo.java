@@ -8,7 +8,7 @@ public class BeerInfo {
     private String name;
     private String description;
     private double abv = -1;
-    private int ibu = -1;
+    private double ibu = -1.0;
     LinkedHashMap<String, String> labels;
     LinkedHashMap<String, String> available;
     LinkedHashMap<String, Object> style;
@@ -59,11 +59,11 @@ public class BeerInfo {
         this.abv = abv;
     }
 
-    public int getIbu() {
+    public double getIbu() {
         return ibu;
     }
 
-    public void setIbu(int ibu) {
+    public void setIbu(double ibu) {
         this.ibu = ibu;
     }
 
