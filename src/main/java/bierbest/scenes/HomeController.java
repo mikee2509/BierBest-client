@@ -1,3 +1,7 @@
+package bierbest.scenes;
+
+import bierbest.api.SearchResult;
+import bierbest.api.BeerInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -35,7 +39,7 @@ public class HomeController {
     private BorderPane homeBorderPane;
 
     private Stage root;
-    private APISearchResult apiResult;
+    private SearchResult apiResult;
     private LinkedList<AnchorPane> resultsPanes;
     private LinkedList<SearchResultController> resultsControllers;
     private AtomicBoolean operationInProgress;
@@ -95,7 +99,7 @@ public class HomeController {
                     ObjectMapper mapper = new ObjectMapper();
                     apiResult = mapper.readValue(getHTML("http://api.brewerydb.com/v2/" +
                                     "search?type=beer&key=a19fcef43297aa840f8c63a0e1fb1023&q=" + URLEncoder.encode(q, "UTF-8")),
-                            APISearchResult.class);
+                            SearchResult.class);
 
                     if (apiResult.getTotalResults() == 0) {
                         return false;

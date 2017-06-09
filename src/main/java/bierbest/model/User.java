@@ -1,3 +1,5 @@
+package bierbest.model;
+
 public class User {
     String userName;
     //TODO...

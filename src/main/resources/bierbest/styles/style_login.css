@@ -1,5 +1,5 @@
 #login_pane {
-    -fx-background-image: url("img/background_login.jpg");
+    -fx-background-image: url("../images/background_login.jpg");
     -fx-background-repeat: stretch;
     -fx-background-position: center center;
 }

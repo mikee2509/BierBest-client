@@ -1,3 +1,6 @@
+package bierbest.scenes;
+
+import bierbest.api.BeerInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -68,7 +71,7 @@ public class DetailsController {
 
         LinkedHashMap<String, String> icons = beerInfo.getLabels();
         String imgurl = icons == null ? null : icons.get("large");
-        beerImage.setImage(new Image(imgurl == null ? "img/placeholder_icon_large.png" : imgurl));
+        beerImage.setImage(new Image(imgurl == null ? "bierbest/images/placeholder_icon_large.png" : imgurl));
 
         LinkedHashMap<String, String> availability = beerInfo.getAvailable();
         String avail = availability == null ? null : availability.get("description");

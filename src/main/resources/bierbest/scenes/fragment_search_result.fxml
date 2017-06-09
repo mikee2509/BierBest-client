@@ -4,8 +4,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <AnchorPane id="result_pane" onMouseClicked="#viewDetails" prefHeight="100.0" prefWidth="700.0"
-            stylesheets="style_beer_properties.css" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="SearchResultController">
+            stylesheets="@../styles/style_beer_properties.css" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="bierbest.scenes.SearchResultController">
     <children>
         <GridPane AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0"
                   AnchorPane.topAnchor="5.0">

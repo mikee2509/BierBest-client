@@ -1,3 +1,5 @@
+package bierbest.api;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.LinkedHashMap;

@@ -6,8 +6,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 <BorderPane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="750.0" prefWidth="1200.0" stylesheets="style_home.css, style_beer_properties.css"
-            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DetailsController">
+            prefHeight="750.0" prefWidth="1200.0" stylesheets="@../styles/style_home.css, @../styles/style_beer_properties.css"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bierbest.scenes.DetailsController">
     <center>
         <VBox prefWidth="1200.0">
             <children>

@@ -37,7 +37,7 @@
 }
 
 #back_button {
-    -fx-image: url("img/back_arrow.png");
+    -fx-image: url("../images/back_arrow.png");
 }
 
 #username_label {

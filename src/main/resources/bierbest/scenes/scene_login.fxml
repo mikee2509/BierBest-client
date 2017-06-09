@@ -9,8 +9,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <BorderPane id="login_pane" prefHeight="500.0" prefWidth="400"
-            stylesheets="style_login.css, style_home.css, style_beer_properties.css, style_order.css"
-            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
+            stylesheets="@../styles/style_login.css, @../styles/style_home.css, @../styles/style_beer_properties.css, @../styles/style_order.css"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bierbest.scenes.LoginController">
     <center>
         <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
             <children>

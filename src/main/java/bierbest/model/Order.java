@@ -1,3 +1,5 @@
+package bierbest.model;
+
 /**
  * Created by Michał on 29.05.2017.
  */

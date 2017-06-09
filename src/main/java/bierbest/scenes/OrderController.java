@@ -1,3 +1,6 @@
+package bierbest.scenes;
+
+import bierbest.model.Order;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

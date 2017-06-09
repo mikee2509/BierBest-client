@@ -1,9 +1,11 @@
+package bierbest.api;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class APISearchResult {
+public class SearchResult {
     private int currentPage;
     private int numberOfPages;
     private int totalResults;
@@ -11,7 +13,7 @@ public class APISearchResult {
 
     @Override
     public String toString() {
-        return "\nAPISearchResult{" +
+        return "\nSearchResult{" +
                 "currentPage=" + currentPage +
                 ", numberOfPages=" + numberOfPages +
                 ", totalResults=" + totalResults +
