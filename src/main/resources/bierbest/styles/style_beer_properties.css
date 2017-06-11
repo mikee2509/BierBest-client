@@ -14,11 +14,6 @@
     -fx-border-radius: 10;
 }
 
-.label {
-    -fx-font-family: "Source Sans Pro";
-    -fx-text-fill: white;
-}
-
 #beer_name {
     -fx-font-size: 40;
 }
@@ -34,13 +29,5 @@
 #beer_description {
     -fx-fill: lightgray;
     -fx-font: 20 "Source Sans Pro";
-}
-
-#back_button {
-    -fx-image: url("../images/back_arrow.png");
-}
-
-#username_label {
-    -fx-font-size: 25;
 }
 

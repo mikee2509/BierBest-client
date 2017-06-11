@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.LinkedHashMap;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BeerInfo {
+public class ApiBeer {
     private String id;
     private String name;
     private String description;
@@ -17,7 +17,7 @@ public class BeerInfo {
 
     @Override
     public String toString() {
-        return "\nBeerInfo{" +
+        return "\nApiBeer{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

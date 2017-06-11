@@ -1,8 +1,5 @@
 package bierbest.model;
 
-/**
- * Created by Michał on 29.05.2017.
- */
 public class Order {
     String beerId;
     String beerName;

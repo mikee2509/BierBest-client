@@ -5,15 +5,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SearchResult {
+public class ApiSearchResult {
     private int currentPage;
     private int numberOfPages;
     private int totalResults;
-    private List<BeerInfo> data;
+    private List<ApiBeer> data;
 
     @Override
     public String toString() {
-        return "\nSearchResult{" +
+        return "\nApiSearchResult{" +
                 "currentPage=" + currentPage +
                 ", numberOfPages=" + numberOfPages +
                 ", totalResults=" + totalResults +
@@ -45,11 +45,11 @@ public class SearchResult {
         this.totalResults = totalResults;
     }
 
-    public List<BeerInfo> getData() {
+    public List<ApiBeer> getData() {
         return data;
     }
 
-    public void setData(List<BeerInfo> data) {
+    public void setData(List<ApiBeer> data) {
         this.data = data;
     }
 }

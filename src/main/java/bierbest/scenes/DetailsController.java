@@ -1,6 +1,6 @@
 package bierbest.scenes;
 
-import bierbest.api.BeerInfo;
+import bierbest.api.ApiBeer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +35,7 @@ public class DetailsController {
 
     private Stage root;
     private Scene prevScene;
-    private BeerInfo beerInfo;
+    private ApiBeer apiBeer;
 
     public void setStage(Stage root) {
         this.root = root;
@@ -45,15 +45,15 @@ public class DetailsController {
         this.prevScene = prevScene;
     }
 
-    public void passBeerProperties(BeerInfo beer, String name, String style, String abv, String description) {
-        beerInfo = beer;
+    public void passBeerProperties(ApiBeer apiBeer, String name, String style, String abv, String description) {
+        this.apiBeer = apiBeer;
         beerName.setText(name);
         beerStyle.setText(style);
         beerAbv.setText(abv);
         beerDescription.setText(description);
         userName.setText(LoginController.currentUser.getUserName());
 
-        double ibu = beerInfo.getIbu();
+        double ibu = this.apiBeer.getIbu();
         if (ibu < 0) {
             beerIbu.setText("Unknown");
             beerIbu.setStyle("-fx-font-style: italic;");
@@ -61,7 +61,7 @@ public class DetailsController {
             beerIbu.setText(String.valueOf(ibu));
         }
 
-        String desc = beerInfo.getDescription();
+        String desc = this.apiBeer.getDescription();
         if (desc != null) {
             beerDescription.setText(desc);
         } else {
@@ -69,11 +69,11 @@ public class DetailsController {
             beerDescription.setStyle("-fx-font-style: italic;");
         }
 
-        LinkedHashMap<String, String> icons = beerInfo.getLabels();
+        LinkedHashMap<String, String> icons = this.apiBeer.getLabels();
         String imgurl = icons == null ? null : icons.get("large");
         beerImage.setImage(new Image(imgurl == null ? "bierbest/images/placeholder_icon_large.png" : imgurl));
 
-        LinkedHashMap<String, String> availability = beerInfo.getAvailable();
+        LinkedHashMap<String, String> availability = this.apiBeer.getAvailable();
         String avail = availability == null ? null : availability.get("description");
         if (avail != null) {
             beerAvailability.setText(avail);
@@ -98,7 +98,7 @@ public class DetailsController {
         stage.setScene(new Scene(fxmlLoader.load()));
         OrderController controller = fxmlLoader.getController();
         controller.setStage(stage);
-        controller.init(beerName.getText(), beerInfo.getId());
+        controller.init(beerName.getText(), apiBeer.getId());
         stage.setTitle("Ask for price");
         stage.show();
     }

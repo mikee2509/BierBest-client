@@ -1,7 +1,7 @@
 package bierbest.scenes;
 
-import bierbest.api.SearchResult;
-import bierbest.api.BeerInfo;
+import bierbest.api.ApiSearchResult;
+import bierbest.api.ApiBeer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -39,7 +39,7 @@ public class HomeController {
     private BorderPane homeBorderPane;
 
     private Stage root;
-    private SearchResult apiResult;
+    private ApiSearchResult apiResult;
     private LinkedList<AnchorPane> resultsPanes;
     private LinkedList<SearchResultController> resultsControllers;
     private AtomicBoolean operationInProgress;
@@ -99,7 +99,7 @@ public class HomeController {
                     ObjectMapper mapper = new ObjectMapper();
                     apiResult = mapper.readValue(getHTML("http://api.brewerydb.com/v2/" +
                                     "search?type=beer&key=a19fcef43297aa840f8c63a0e1fb1023&q=" + URLEncoder.encode(q, "UTF-8")),
-                            SearchResult.class);
+                            ApiSearchResult.class);
 
                     if (apiResult.getTotalResults() == 0) {
                         return false;
@@ -108,7 +108,7 @@ public class HomeController {
                     try {
                         int numOfResults = apiResult.getData().size();
                         int current = 1;
-                        for (BeerInfo beer : apiResult.getData()) {
+                        for (ApiBeer beer : apiResult.getData()) {
                             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fragment_search_result.fxml"));
                             AnchorPane pane = fxmlLoader.load();
                             SearchResultController controller = fxmlLoader.getController();

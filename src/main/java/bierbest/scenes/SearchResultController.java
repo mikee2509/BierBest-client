@@ -1,6 +1,6 @@
 package bierbest.scenes;
 
-import bierbest.api.BeerInfo;
+import bierbest.api.ApiBeer;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +28,7 @@ public class SearchResultController {
     private ImageView beerIcon;
 
     private Stage root;
-    private BeerInfo beerInfo;
+    private ApiBeer apiBeer;
     private HomeController rootController;
     private Pane detailsPane;
 
@@ -40,15 +40,15 @@ public class SearchResultController {
         this.rootController = rootController;
     }
 
-    public void init(BeerInfo beer) {
-        beerInfo = beer;
-        LinkedHashMap<String, String> icons = beerInfo.getLabels();
+    public void init(ApiBeer apiBeer) {
+        this.apiBeer = apiBeer;
+        LinkedHashMap<String, String> icons = this.apiBeer.getLabels();
         String imgurl = icons == null ? null : icons.get("icon");
         beerIcon.setImage(new Image(imgurl == null ? "bierbest/images/placeholder_icon.png" : imgurl));
 
-        beerName.setText(beerInfo.getName());
+        beerName.setText(this.apiBeer.getName());
 
-        LinkedHashMap<String, Object> style = beerInfo.getStyle();
+        LinkedHashMap<String, Object> style = this.apiBeer.getStyle();
         String styleName = style == null ? null : (String) style.get("name");
         if (styleName != null) {
             beerStyle.setText(styleName);
@@ -57,7 +57,7 @@ public class SearchResultController {
             beerStyle.setStyle("-fx-font-style: italic;");
         }
 
-        double abv = beerInfo.getAbv();
+        double abv = this.apiBeer.getAbv();
         if (abv < 0) {
             beerAbv.setText("Unknown");
             beerAbv.setStyle("-fx-font-style: italic;");
@@ -65,7 +65,7 @@ public class SearchResultController {
             beerAbv.setText(String.valueOf(abv) + "%");
         }
 
-        String desc = beerInfo.getDescription();
+        String desc = this.apiBeer.getDescription();
         if (desc != null) {
             desc = desc.replaceAll("\\r\\n|\\r|\\n", " ");
             beerDescription.setText(desc);
@@ -85,7 +85,7 @@ public class SearchResultController {
                     DetailsController controller = fxmlLoader.getController();
                     controller.setStage(root);
                     controller.setPrevScene(root.getScene());
-                    controller.passBeerProperties(beerInfo, beerName.getText(), beerStyle.getText(), beerAbv.getText(), beerDescription.getText());
+                    controller.passBeerProperties(apiBeer, beerName.getText(), beerStyle.getText(), beerAbv.getText(), beerDescription.getText());
                     detailsPane = pane;
                     return null;
                 }

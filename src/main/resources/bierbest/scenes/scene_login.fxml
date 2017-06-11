@@ -1,46 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<BorderPane id="login_pane" prefHeight="500.0" prefWidth="400"
-            stylesheets="@../styles/style_login.css, @../styles/style_home.css, @../styles/style_beer_properties.css, @../styles/style_order.css"
-            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bierbest.scenes.LoginController">
-    <center>
-        <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+<BorderPane id="login_background" fx:id="loginPane" prefHeight="500.0" prefWidth="400"
+            stylesheets="@../styles/style_login.css, @../styles/style_shared.css"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="bierbest.scenes.LoginController">
+    <top>
+        <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
             <children>
                 <Label text="BierBest">
                     <font>
-                        <Font size="69.0"/>
+                        <Font size="65.0"/>
                     </font>
-                    <VBox.margin>
-                        <Insets bottom="40.0"/>
-                    </VBox.margin>
                     <effect>
                         <Glow/>
                     </effect>
                 </Label>
-                <TextField onAction="#browseBeers" fx:id="username" id="text_field" promptText="Username">
+                <HBox alignment="TOP_CENTER" spacing="50.0">
+                    <children>
+                        <VBox alignment="TOP_CENTER">
+                            <children>
+                                <Label id="login_label" alignment="TOP_CENTER" onMouseClicked="#loginForm"
+                                       text="LOG IN"/>
+                                <Region id="underscore" fx:id="logInUnderscore" prefHeight="3.0"/>
+                            </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER">
+                            <children>
+                                <Label id="login_label" alignment="TOP_CENTER" onMouseClicked="#registrationForm"
+                                       text="SIGN UP"/>
+                                <Region id="underscore" fx:id="signUpUnderscore" prefHeight="3.0" visible="false"/>
+                            </children>
+                        </VBox>
+                    </children>
                     <VBox.margin>
-                        <Insets left="50.0" right="50.0"/>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </HBox>
+            </children>
+            <BorderPane.margin>
+                <Insets bottom="10.0" top="10.0"/>
+            </BorderPane.margin>
+        </VBox>
+    </top>
+    <center>
+        <VBox fx:id="loginForm" alignment="TOP_CENTER" spacing="10.0" BorderPane.alignment="TOP_CENTER">
+            <children>
+                <TextField id="text_field" fx:id="username" onAction="#logIn" promptText="Username">
+                    <VBox.margin>
+                        <Insets left="50.0" right="50.0" top="40.0"/>
                     </VBox.margin>
                 </TextField>
-                <PasswordField id="text_field" disable="true" editable="false" promptText="Password">
+                <PasswordField id="text_field" fx:id="password" onAction="#logIn" promptText="Password">
                     <VBox.margin>
                         <Insets left="50.0" right="50.0"/>
                     </VBox.margin>
                 </PasswordField>
-                <Button id="login_button" mnemonicParsing="false" onAction="#browseBeers" text="Browse Beers">
+                <Button id="button" style="-fx-font-size: 30" mnemonicParsing="false" onAction="#logIn" text="Log in">
                     <VBox.margin>
-                        <Insets top="30.0"/>
+                        <Insets top="40.0"/>
                     </VBox.margin>
                 </Button>
             </children>
+            <BorderPane.margin>
+                <Insets bottom="60.0" top="30.0"/>
+            </BorderPane.margin>
         </VBox>
     </center>
 </BorderPane>

@@ -1,0 +1,94 @@
+.label {
+    -fx-font-family: "Source Sans Pro";
+    -fx-text-fill: white;
+}
+
+.text-input, .text-input:focused {
+    -fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);
+}
+
+.text-area .content {
+    -fx-background-color: #eeeeee;
+}
+
+.text-area {
+    -fx-text-fill: black;
+    -fx-font-size: 18px;
+    -fx-wrap-text: true;
+}
+
+#text_field {
+    -fx-background-color: #eeeeee;
+    -fx-text-fill: black;
+    -fx-font-size: 18px;
+}
+
+#username_label {
+    -fx-font-size: 25;
+}
+
+#home_background {
+    -fx-background-image: url("../images/background_home.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+}
+
+#back_button {
+    -fx-image: url("../images/back_arrow.png");
+}
+
+#button {
+    -fx-font-family: "Source Sans Pro";
+    -fx-background-color: #090a0c,
+    linear-gradient(#494b30 0%, #29281d 20%, #191d22 100%),
+    linear-gradient(#2b2a20, #221b13),
+    radial-gradient(center 50% 0%, radius 100%, rgba(148, 128, 37, 0.9), rgba(255, 255, 255, 0));
+    -fx-background-radius: 5, 4, 3, 5;
+    -fx-background-insets: 0, 1, 2, 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 18px;
+    -fx-padding: 8 20 8 20;
+}
+
+#button:hover {
+    -fx-background-color: #090a0c,
+    linear-gradient(#494b30 0%, #dbd69b 20%, #191d22 100%),
+    linear-gradient(#2b2a20, #221b13),
+    radial-gradient(center 50% 0%, radius 100%, rgba(148, 128, 37, 0.9), rgba(255, 255, 255, 0));
+}
+
+#button:pressed {
+    -fx-background-color: #090a0c,
+    linear-gradient(#494b30 0%, #29281d 20%, #191d22 100%),
+    linear-gradient(#2b2a20, #221b13),
+    radial-gradient(center 50% 0%, radius 100%, rgba(86, 71, 22, 0.9), rgba(255, 255, 255, 0));
+}
+
+#negative_button {
+    -fx-font-family: "Source Sans Pro";
+    -fx-background-color: #090a0c,
+    linear-gradient(#494b30 0%, #29281d 20%, #191d22 100%),
+    linear-gradient(#2b2a20, #221b13),
+    radial-gradient(center 50% 0%, radius 100%, rgba(148, 24, 7, 0.9), rgba(255, 255, 255, 0));
+    -fx-background-radius: 5, 4, 3, 5;
+    -fx-background-insets: 0, 1, 2, 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 18px;
+    -fx-padding: 8 20 8 20;
+}
+
+#negative_button:hover {
+    -fx-background-color: #090a0c,
+    linear-gradient(#494b30 0%, #dbd69b 20%, #191d22 100%),
+    linear-gradient(#2b2a20, #221b13),
+    radial-gradient(center 50% 0%, radius 100%, rgba(148, 24, 7, 0.9), rgba(255, 255, 255, 0));
+}
+
+#negative_button:pressed {
+    -fx-background-color: #090a0c,
+    linear-gradient(#494b30 0%, #29281d 20%, #191d22 100%),
+    linear-gradient(#2b2a20, #221b13),
+    radial-gradient(center 50% 0%, radius 100%, rgba(148, 24, 7, 0.9), rgba(255, 255, 255, 0));
+}
