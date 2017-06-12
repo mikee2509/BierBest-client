@@ -2,10 +2,8 @@ package bierbest.scenes;
 
 import bierbest.model.Order;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -29,14 +27,27 @@ public class OrderController {
     public TextArea message;
     @FXML
     public BorderPane orderPane;
+    @FXML
+    public VBox errorVbox;
 
     private String beerName;
     private String beerId;
     private Stage stage;
 
     public OrderController() {
-        Platform.runLater(() -> {
-            quantity.requestFocus();
+    }
+
+    public void initialize() {
+        quantity.requestFocus();
+        quantity.textProperty().addListener((ov, oldValue, newValue) -> {
+            errorVbox.setVisible(false);
+            if (quantity.getText().length() > 5) {
+                String s = quantity.getText().substring(0, 5);
+                quantity.setText(s);
+            }
+            if (!newValue.matches("\\d*")) {
+                quantity.setText(newValue.replaceAll("[^\\d]", ""));
+            }
         });
     }
 
@@ -51,19 +62,13 @@ public class OrderController {
     }
 
     public void sendMessage(ActionEvent actionEvent) {
-        orderPane.setBottom(null);
         Order order = new Order();
         String quant = quantity.getText();
-        if (StringUtils.isNumeric(quant)) {
+        if (!StringUtils.isBlank(quant)) {
             order.setQuantity(Integer.parseInt(quant));
         } else {
-            Label label = new Label("Quantity must be a number");
-            label.setStyle("-fx-font-style: italic; -fx-font-size: 20; " +
-                    "-fx-font-family: \"Source Sans Pro\"; -fx-text-fill: white;");
-            label.setPadding(new Insets(5, 15, 5, 25));
-            VBox vBox = new VBox(label);
-            vBox.setStyle("-fx-background-color: red");
-            orderPane.setBottom(vBox);
+            errorVbox.setVisible(true);
+            quantity.requestFocus();
             return;
         }
         order.setBeerId(beerId);

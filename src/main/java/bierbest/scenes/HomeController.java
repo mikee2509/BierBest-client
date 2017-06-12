@@ -1,9 +1,8 @@
 package bierbest.scenes;
 
-import bierbest.api.ApiSearchResult;
 import bierbest.api.ApiBeer;
+import bierbest.api.ApiSearchResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,10 +45,11 @@ public class HomeController {
 
     public HomeController() {
         operationInProgress = new AtomicBoolean(false);
-        Platform.runLater(() -> {
-            searchField.requestFocus();
-            username.setText(LoginController.currentUser.getUserName());
-        });
+    }
+
+    public void initialize() {
+        searchField.requestFocus();
+        username.setText(LoginController.currentUser.getUsername());
     }
 
     public static String getHTML(String urlToRead) throws Exception {

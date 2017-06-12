@@ -29,6 +29,9 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
     // https://mvnrepository.com/artifact/javassist/javassist
     compile group: 'javassist', name: 'javassist', version: '3.12.1.GA'
+    // https://mvnrepository.com/artifact/commons-validator/commons-validator
+    compile group: 'commons-validator', name: 'commons-validator', version: '1.4.0'
+
 
 
 }

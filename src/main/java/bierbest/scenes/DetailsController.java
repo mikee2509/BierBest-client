@@ -51,7 +51,7 @@ public class DetailsController {
         beerStyle.setText(style);
         beerAbv.setText(abv);
         beerDescription.setText(description);
-        userName.setText(LoginController.currentUser.getUserName());
+        userName.setText(LoginController.currentUser.getUsername());
 
         double ibu = this.apiBeer.getIbu();
         if (ibu < 0) {

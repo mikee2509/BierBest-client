@@ -6,9 +6,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <BorderPane id="login_background" fx:id="loginPane" prefHeight="500.0" prefWidth="400"
-            stylesheets="@../styles/style_login.css, @../styles/style_shared.css"
-            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="bierbest.scenes.LoginController">
+            stylesheets="@../styles/style_login.css, @../styles/style_shared.css" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="bierbest.scenes.LoginController">
     <top>
         <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
             <children>
@@ -24,15 +23,15 @@
                     <children>
                         <VBox alignment="TOP_CENTER">
                             <children>
-                                <Label id="login_label" alignment="TOP_CENTER" onMouseClicked="#loginForm"
+                                <Label id="login_label" alignment="TOP_CENTER" onMouseClicked="#switchToLoginForm"
                                        text="LOG IN"/>
                                 <Region id="underscore" fx:id="logInUnderscore" prefHeight="3.0"/>
                             </children>
                         </VBox>
                         <VBox alignment="TOP_CENTER">
                             <children>
-                                <Label id="login_label" alignment="TOP_CENTER" onMouseClicked="#registrationForm"
-                                       text="SIGN UP"/>
+                                <Label id="login_label" alignment="TOP_CENTER"
+                                       onMouseClicked="#switchToRegistrationForm" text="SIGN UP"/>
                                 <Region id="underscore" fx:id="signUpUnderscore" prefHeight="3.0" visible="false"/>
                             </children>
                         </VBox>
@@ -50,25 +49,32 @@
     <center>
         <VBox fx:id="loginForm" alignment="TOP_CENTER" spacing="10.0" BorderPane.alignment="TOP_CENTER">
             <children>
-                <TextField id="text_field" fx:id="username" onAction="#logIn" promptText="Username">
+                <TextField id="text_field" fx:id="usernameLogin" onAction="#logIn" promptText="Username">
                     <VBox.margin>
                         <Insets left="50.0" right="50.0" top="40.0"/>
                     </VBox.margin>
                 </TextField>
-                <PasswordField id="text_field" fx:id="password" onAction="#logIn" promptText="Password">
+                <PasswordField id="text_field" fx:id="passwordLogin" onAction="#logIn" promptText="Password">
                     <VBox.margin>
                         <Insets left="50.0" right="50.0"/>
                     </VBox.margin>
                 </PasswordField>
-                <Button id="button" style="-fx-font-size: 30" mnemonicParsing="false" onAction="#logIn" text="Log in">
+                <Button id="button" mnemonicParsing="false" onAction="#logIn" style="-fx-font-size: 30" text="Log in">
                     <VBox.margin>
                         <Insets top="40.0"/>
                     </VBox.margin>
                 </Button>
             </children>
             <BorderPane.margin>
-                <Insets bottom="60.0" top="30.0"/>
+                <Insets bottom="30.0" top="30.0"/>
             </BorderPane.margin>
         </VBox>
     </center>
+    <bottom>
+        <VBox id="error_background" fx:id="errorVbox" alignment="CENTER" visible="false" BorderPane.alignment="CENTER">
+            <children>
+                <Label id="error_message" fx:id="errorText" alignment="CENTER" text="Error message"/>
+            </children>
+        </VBox>
+    </bottom>
 </BorderPane>

@@ -21,10 +21,21 @@
     -fx-background-color: #eeeeee;
     -fx-text-fill: black;
     -fx-font-size: 18px;
+    -fx-prompt-text-fill: grey;
 }
 
 #username_label {
     -fx-font-size: 25;
+}
+
+#error_message {
+    -fx-font-style: italic;
+    -fx-font-size: 20;
+    -fx-padding: 5, 0, 5, 0;
+}
+
+#error_background {
+    -fx-background-color: red
 }
 
 #home_background {
