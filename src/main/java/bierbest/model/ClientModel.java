@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ClientModel implements Serializable {
+    private static final long serialVersionUID = 108L;
 
     public ClientModel() {
     }

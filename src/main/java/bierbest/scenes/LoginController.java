@@ -68,7 +68,7 @@ public class LoginController {
     @FXML
     public Label errorText;
 
-    static ClientModel currentUser;
+    private static ClientModel currentUser;
     private Preferences preferences;
     private Stage root;
 
@@ -82,7 +82,7 @@ public class LoginController {
         passwordLogin.setText(preferences.get(LoginController.PASSWORD_ID, ""));
     }
 
-    public ClientModel getCurrentUser() {
+    public static ClientModel getCurrentUser() {
         return currentUser;
     }
 

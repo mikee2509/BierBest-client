@@ -58,7 +58,7 @@ public class HomeController {
 
     public void initialize() {
         searchField.requestFocus();
-        username.setText(LoginController.currentUser.getUsername());
+        username.setText(LoginController.getCurrentUser().getUsername());
     }
 
     public static String getHTML(String urlToRead) throws Exception {

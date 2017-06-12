@@ -22,8 +22,14 @@ public class BierBestObjectInputStream extends ObjectInputStream {
                 return ObjectStreamClass.lookup(bierbest.model.payloads.Payload.class);
             case "bierbest.communication.payloads.ClientData":
                 return ObjectStreamClass.lookup(bierbest.model.payloads.ClientData.class);
+            case "bierbest.communication.payloads.OrderData":
+                return ObjectStreamClass.lookup(bierbest.model.payloads.OrderData.class);
+            case "bierbest.communication.payloads.Orders":
+                return ObjectStreamClass.lookup(bierbest.model.payloads.Orders.class);
             case "bierbest.client.ClientModel":
                 return ObjectStreamClass.lookup(bierbest.model.ClientModel.class);
+            case "bierbest.order.OrderModel":
+                return ObjectStreamClass.lookup(bierbest.model.OrderModel.class);
         }
         return desc;
     }

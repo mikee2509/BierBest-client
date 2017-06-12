@@ -56,7 +56,7 @@ public class DetailsController {
         beerStyle.setText(style);
         beerAbv.setText(abv);
         beerDescription.setText(description);
-        username.setText(LoginController.currentUser.getUsername());
+        username.setText(LoginController.getCurrentUser().getUsername());
 
         double ibu = this.apiBeer.getIbu();
         if (ibu < 0) {
@@ -103,7 +103,7 @@ public class DetailsController {
         stage.setScene(new Scene(fxmlLoader.load()));
         OrderController controller = fxmlLoader.getController();
         controller.setStage(stage);
-        controller.init(beerName.getText(), apiBeer.getId());
+        controller.init(apiBeer);
         stage.setTitle("Ask for price");
         stage.show();
     }
