@@ -143,6 +143,8 @@ public class LoginController {
             ArrayList<Response> responses = connection.getValue();
             if (responses.get(0).getResponseCode() == Response.SUCCESS) {
                 LOGGER.log(Level.INFO, "Successfully signed up");
+                preferences.put(USERNAME_ID, usernameRegistration.getText());
+                preferences.put(PASSWORD_ID, passwordRegistration.getText());
                 loadHomeScene();
             } else if (responses.get(0).getResponseCode() == Response.FAILED) {
                 showError("Username already taken.", usernameRegistration);

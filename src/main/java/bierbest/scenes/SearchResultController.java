@@ -84,7 +84,7 @@ public class SearchResultController {
                     Pane pane = fxmlLoader.load();
                     DetailsController controller = fxmlLoader.getController();
                     controller.setStage(root);
-                    controller.setPrevScene(root.getScene());
+                    controller.setHomeScene(root.getScene());
                     controller.passBeerProperties(apiBeer, beerName.getText(), beerStyle.getText(), beerAbv.getText(), beerDescription.getText());
                     detailsPane = pane;
                     return null;

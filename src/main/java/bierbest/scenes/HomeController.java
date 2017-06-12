@@ -8,14 +8,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
+import javafx.geometry.Side;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javassist.bytecode.stackmap.TypeData;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
@@ -25,11 +27,17 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class HomeController {
+    private static final Logger LOGGER = Logger.getLogger(TypeData.ClassName.class.getName());
+
     @FXML
     public Label username;
+    @FXML
+    public ImageView contextMenuArrow;
     @FXML
     private VBox searchResults;
     @FXML
@@ -39,6 +47,7 @@ public class HomeController {
 
     private Stage root;
     private ApiSearchResult apiResult;
+    private ContextMenu contextMenu;
     private LinkedList<AnchorPane> resultsPanes;
     private LinkedList<SearchResultController> resultsControllers;
     private AtomicBoolean operationInProgress;
@@ -78,7 +87,7 @@ public class HomeController {
         return homeBorderPane;
     }
 
-    public void searchBeers(ActionEvent actionEvent) throws Exception {
+    public void searchBeers(ActionEvent actionEvent) {
         if (operationInProgress.compareAndSet(false, true)) {
             final String query = searchField.getText();
             if (StringUtils.isBlank(query)) {
@@ -120,7 +129,8 @@ public class HomeController {
                             ++current;
                         }
                     } catch (Exception e) {
-                        System.out.println("Exception when processing search results: " + e);
+                        LOGGER.log(Level.WARNING, "Exception while processing search results");
+                        e.printStackTrace();
                     }
                     return true;
                 }
@@ -156,5 +166,13 @@ public class HomeController {
             Thread thread = new Thread(task);
             thread.start();
         }
+    }
+
+    public void showContextMenu(MouseEvent mouseEvent) {
+        if(contextMenu == null) {
+            contextMenu = DropdownMenu.getInstance(root);
+            username.setContextMenu(contextMenu);
+        }
+        contextMenu.show(contextMenuArrow, Side.BOTTOM, -100, 15);
     }
 }

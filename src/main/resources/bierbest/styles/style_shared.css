@@ -48,6 +48,10 @@
     -fx-image: url("../images/back_arrow.png");
 }
 
+#context_menu_arrow {
+    -fx-image: url("../images/context_menu_arrow.png");
+}
+
 #button {
     -fx-font-family: "Source Sans Pro";
     -fx-background-color: #090a0c,

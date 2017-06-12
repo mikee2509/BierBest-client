@@ -82,7 +82,7 @@ public class ServerConnection extends Task<ArrayList<Response>> {
             }
             client.close();
         } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, "ServerConnection error");
+            LOGGER.log(Level.SEVERE, "Server connection error");
             e.printStackTrace();
         }
         return responses;

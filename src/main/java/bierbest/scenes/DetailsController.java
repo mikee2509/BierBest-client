@@ -4,7 +4,9 @@ import bierbest.api.ApiBeer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Side;
 import javafx.scene.Scene;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,7 +19,9 @@ import java.util.LinkedHashMap;
 
 public class DetailsController {
     @FXML
-    public Label userName;
+    public Label username;
+    @FXML
+    public ImageView contextMenuArrow;
     @FXML
     private ImageView beerImage;
     @FXML
@@ -34,15 +38,16 @@ public class DetailsController {
     private Text beerDescription;
 
     private Stage root;
-    private Scene prevScene;
+    private Scene homeScene;
     private ApiBeer apiBeer;
+    private ContextMenu contextMenu;
 
     public void setStage(Stage root) {
         this.root = root;
     }
 
-    public void setPrevScene(Scene prevScene) {
-        this.prevScene = prevScene;
+    public void setHomeScene(Scene homeScene) {
+        this.homeScene = homeScene;
     }
 
     public void passBeerProperties(ApiBeer apiBeer, String name, String style, String abv, String description) {
@@ -51,7 +56,7 @@ public class DetailsController {
         beerStyle.setText(style);
         beerAbv.setText(abv);
         beerDescription.setText(description);
-        userName.setText(LoginController.currentUser.getUsername());
+        username.setText(LoginController.currentUser.getUsername());
 
         double ibu = this.apiBeer.getIbu();
         if (ibu < 0) {
@@ -85,7 +90,7 @@ public class DetailsController {
     }
 
     public void goBackToResults(MouseEvent mouseEvent) {
-        root.setScene(prevScene);
+        root.setScene(homeScene);
     }
 
 
@@ -101,5 +106,13 @@ public class DetailsController {
         controller.init(beerName.getText(), apiBeer.getId());
         stage.setTitle("Ask for price");
         stage.show();
+    }
+
+    public void showContextMenu(MouseEvent mouseEvent) {
+        if(contextMenu == null) {
+            contextMenu = DropdownMenu.getInstance(root);
+            username.setContextMenu(contextMenu);
+        }
+        contextMenu.show(contextMenuArrow, Side.BOTTOM, -100, 15);
     }
 }
