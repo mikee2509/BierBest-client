@@ -37,7 +37,7 @@ dependencies {
 }
 
 jfx {
-    mainClass = 'Main'
+    mainClass = 'bierbest.Main'
     vendor = 'Michal'
     jfxMainAppJarName = 'BierBest.jar'
     jfxAppOutputDir = "build/jfx/app"
