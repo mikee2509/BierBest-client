@@ -2,3 +2,88 @@
     -fx-font-size: 40;
 }
 
+.root {
+    -fx-background-color: transparent;
+}
+
+.table-view {
+    -fx-base: #1d1d1d;
+    -fx-control-inner-background: transparent;
+    -fx-background-color: transparent;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(#082029 0%, black 100%);
+}
+
+.table-view .column-header-background .label {
+    -fx-background-color: transparent;
+    -fx-font-family: "Source Sans Pro";
+    -fx-text-fill: white;
+    -fx-font-weight: normal;
+    -fx-font-size: 22;
+    -fx-label-padding: 5;
+    -fx-alignment: center-left;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: white;
+    -fx-font-family: "Source Sans Pro";
+    -fx-font-size: 18;
+    -fx-label-padding: 5;
+}
+
+.table-row-cell {
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:odd {
+    -fx-background-color: rgba(0, 0, 0, 0.8);
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #0f3f51;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+/* The main scrollbar **track** CSS class  */
+.table-view > .virtual-flow > .scroll-bar:vertical .track {
+    -fx-background-color: black;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+    -fx-border-radius: 2em;
+}
+
+/* The increment and decrement button CSS class of scrollbar */
+.table-view > .virtual-flow > .scroll-bar:vertical .increment-button,
+.table-view > .virtual-flow > .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0em;
+    -fx-padding: 0 13 0 0;
+}
+
+.table-view > .virtual-flow > .scroll-bar .increment-arrow,
+.table-view > .virtual-flow > .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+/* The main scrollbar **thumb** CSS class which we drag every time (movable) */
+.table-view > .virtual-flow > .scroll-bar:horizontal .thumb,
+.table-view > .virtual-flow > .scroll-bar:vertical .thumb {
+    -fx-background-color: derive(black, 90%);
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+}

@@ -3,17 +3,17 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
-<VBox fx:id="registrationForm" alignment="TOP_CENTER" prefWidth="400.0" spacing="10.0"
-      stylesheets="@../styles/style_shared.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="registrationForm" alignment="TOP_CENTER" prefWidth="400.0"
+      spacing="10.0" stylesheets="@../styles/style_shared.css" xmlns="http://javafx.com/javafx/8">
     <children>
-        <TextField id="text_field" fx:id="usernameRegistration" promptText="Username"/>
-        <PasswordField id="text_field" fx:id="passwordRegistration" promptText="Password"/>
-        <TextField id="text_field" fx:id="firstName" promptText="First Name"/>
-        <TextField id="text_field" fx:id="lastName" promptText="Last Name"/>
-        <TextField id="text_field" fx:id="streetAddress" promptText="Street Address"/>
-        <TextField id="text_field" fx:id="city" promptText="City"/>
-        <TextField id="text_field" fx:id="email" promptText="Email"/>
-        <TextField id="text_field" fx:id="phoneNumber" promptText="Phone Number"/>
+        <TextField id="text_field" fx:id="usernameRegistration" onAction="#signUp" promptText="Username"/>
+        <PasswordField id="text_field" fx:id="passwordRegistration" onAction="#signUp" promptText="Password"/>
+        <TextField id="text_field" fx:id="firstName" onAction="#signUp" promptText="First Name"/>
+        <TextField id="text_field" fx:id="lastName" onAction="#signUp" promptText="Last Name"/>
+        <TextField id="text_field" fx:id="streetAddress" onAction="#signUp" promptText="Street Address"/>
+        <TextField id="text_field" fx:id="city" onAction="#signUp" promptText="City"/>
+        <TextField id="text_field" fx:id="email" onAction="#signUp" promptText="Email"/>
+        <TextField id="text_field" fx:id="phoneNumber" onAction="#signUp" promptText="Phone Number"/>
         <Button id="button" mnemonicParsing="false" onAction="#signUp" style="-fx-font-size: 30" text="Sign up">
             <VBox.margin>
                 <Insets top="20.0"/>

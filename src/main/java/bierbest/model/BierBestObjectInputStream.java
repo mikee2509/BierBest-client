@@ -9,6 +9,7 @@ public class BierBestObjectInputStream extends ObjectInputStream {
     public BierBestObjectInputStream(InputStream in) throws IOException {
         super(in);
     }
+
     @Override
     protected java.io.ObjectStreamClass readClassDescriptor()
             throws IOException, ClassNotFoundException {
@@ -30,6 +31,8 @@ public class BierBestObjectInputStream extends ObjectInputStream {
                 return ObjectStreamClass.lookup(bierbest.model.ClientModel.class);
             case "bierbest.order.OrderModel":
                 return ObjectStreamClass.lookup(bierbest.model.OrderModel.class);
+            case "bierbest.order.BeerInfo":
+                return ObjectStreamClass.lookup(bierbest.model.BeerInfo.class);
         }
         return desc;
     }

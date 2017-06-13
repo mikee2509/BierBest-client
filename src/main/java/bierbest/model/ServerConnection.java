@@ -67,16 +67,14 @@ public class ServerConnection extends Task<ArrayList<Response>> {
                 Socket client = sslContext.getSocketFactory().createSocket(serverAddress, port);
                 ObjectOutputStream outToServer = new ObjectOutputStream(client.getOutputStream());
                 BierBestObjectInputStream inFromServer = new BierBestObjectInputStream(client.getInputStream());
-            )
-        {
-            LOGGER.log(Level.INFO, "Connected to: " + client.getRemoteSocketAddress());
+        ) {
             for (Request r : requests) {
                 outToServer.writeObject(r);
             }
             int requestsLeft = requests.size();
             Response tempResponse;
-            while (requestsLeft>0 && (tempResponse = (Response) inFromServer.readObject()) != null) {
-                LOGGER.log(Level.INFO, tempResponse.toString());
+            while (requestsLeft > 0 && (tempResponse = (Response) inFromServer.readObject()) != null) {
+                LOGGER.log(Level.INFO, "Received response for action: " + tempResponse.messageAction);
                 responses.add(tempResponse);
                 --requestsLeft;
             }

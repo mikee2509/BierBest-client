@@ -1,8 +1,5 @@
 package bierbest.model;
 
-import bierbest.model.BeerInfo;
-import bierbest.model.ClientModel;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -16,6 +13,19 @@ public class OrderModel implements Serializable {
     protected String statusShopSide;
     protected BeerInfo beerInfo;
     protected Integer quantity;
+
+    @Override
+    public String toString() {
+        return "OrderModel{" +
+                "id=" + id +
+                ", client=" + client +
+                ", date=" + date +
+                ", statusClientSide='" + statusClientSide + '\'' +
+                ", statusShopSide='" + statusShopSide + '\'' +
+                ", beerInfo=" + beerInfo +
+                ", quantity=" + quantity +
+                '}';
+    }
 
     public Integer getId() {
         return id;

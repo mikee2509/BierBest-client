@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 public class DropdownMenu {
     private static final Logger LOGGER = Logger.getLogger(TypeData.ClassName.class.getName());
 
-    public static ContextMenu getInstance(Stage root){
+    public static ContextMenu getInstance(Stage root) {
         MenuItem orders = new MenuItem("   Orders   ");
         MenuItem logout = new MenuItem("   Log Out   ");
         orders.setOnAction(event -> {

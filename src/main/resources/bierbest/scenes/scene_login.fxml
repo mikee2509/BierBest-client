@@ -5,9 +5,9 @@
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<BorderPane id="login_background" fx:id="loginPane" prefHeight="500.0" prefWidth="400"
-            stylesheets="@../styles/style_login.css, @../styles/style_shared.css" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="bierbest.scenes.LoginController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" id="login_background" fx:id="loginPane" prefHeight="500.0"
+            prefWidth="400" stylesheets="@../styles/style_login.css, @../styles/style_shared.css"
+            xmlns="http://javafx.com/javafx/8" fx:controller="bierbest.scenes.LoginController">
     <top>
         <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
             <children>

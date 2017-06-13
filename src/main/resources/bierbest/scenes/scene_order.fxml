@@ -3,10 +3,10 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane id="order_pane" fx:id="orderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="530.0" prefWidth="600.0"
-            stylesheets="@../styles/style_order.css, @../styles/style_shared.css" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="bierbest.scenes.OrderController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" id="order_pane" fx:id="orderPane" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0"
+            prefWidth="600.0" stylesheets="@../styles/style_order.css, @../styles/style_shared.css"
+            xmlns="http://javafx.com/javafx/8" fx:controller="bierbest.scenes.OrderController">
     <center>
         <VBox alignment="TOP_CENTER" spacing="5.0" BorderPane.alignment="TOP_CENTER">
             <children>

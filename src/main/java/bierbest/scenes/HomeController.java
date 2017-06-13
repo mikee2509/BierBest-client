@@ -9,7 +9,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Side;
-import javafx.scene.control.*;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -169,7 +172,7 @@ public class HomeController {
     }
 
     public void showContextMenu(MouseEvent mouseEvent) {
-        if(contextMenu == null) {
+        if (contextMenu == null) {
             contextMenu = DropdownMenu.getInstance(root);
             username.setContextMenu(contextMenu);
         }

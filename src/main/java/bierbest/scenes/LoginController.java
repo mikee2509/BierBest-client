@@ -107,7 +107,9 @@ public class LoginController {
         connection.addSingleRequest(request);
         connection.setOnSucceeded(event -> {
             ArrayList<Response> responses = connection.getValue();
-            if (responses.get(0).getResponseCode() == Response.SUCCESS) {
+            if (responses.isEmpty()) {
+                showError("Error connecting to the server", usernameLogin);
+            } else if (responses.get(0).getResponseCode() == Response.SUCCESS) {
                 ClientData clientData = (ClientData) responses.get(0).getPayload();
                 currentUser = clientData.getClient();
                 LOGGER.log(Level.INFO, "Successfully logged in");
@@ -141,7 +143,9 @@ public class LoginController {
         connection.addSingleRequest(request);
         connection.setOnSucceeded(event -> {
             ArrayList<Response> responses = connection.getValue();
-            if (responses.get(0).getResponseCode() == Response.SUCCESS) {
+            if (responses.isEmpty()) {
+                showError("Error connecting to the server", usernameLogin);
+            } else if (responses.get(0).getResponseCode() == Response.SUCCESS) {
                 LOGGER.log(Level.INFO, "Successfully signed up");
                 preferences.put(USERNAME_ID, usernameRegistration.getText());
                 preferences.put(PASSWORD_ID, passwordRegistration.getText());

@@ -10,6 +10,16 @@ public class BeerInfo implements Serializable {
     protected String URL;
     protected String imgURL;
 
+    @Override
+    public String toString() {
+        return "BeerInfo{" +
+                "name='" + name + '\'' +
+                ", priceString='" + priceString + '\'' +
+                ", URL='" + URL + '\'' +
+                ", imgURL='" + imgURL + '\'' +
+                '}';
+    }
+
     public String getName() {
         return name;
     }

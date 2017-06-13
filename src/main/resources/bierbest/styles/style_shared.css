@@ -107,3 +107,31 @@
     linear-gradient(#2b2a20, #221b13),
     radial-gradient(center 50% 0%, radius 100%, rgba(148, 24, 7, 0.9), rgba(255, 255, 255, 0));
 }
+
+#refresh_button {
+    -fx-font-family: "Source Sans Pro";
+    -fx-background-color: #090a0c,
+    linear-gradient(#30414b 0%, #252529 20%, #191d22 100%),
+    linear-gradient(#21242b, #191222),
+    radial-gradient(center 50% 0%, radius 100%, rgba(8, 32, 148, 0.9), rgba(255, 255, 255, 0));
+    -fx-background-radius: 5, 4, 3, 5;
+    -fx-background-insets: 0, 1, 2, 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 18px;
+    -fx-padding: 8 20 8 20;
+}
+
+#refresh_button:hover {
+    -fx-background-color: #090a0c,
+    linear-gradient(#343c4b 0%, #dbd69b 20%, #191d22 100%),
+    linear-gradient(#23242b, #1b1b22),
+    radial-gradient(center 50% 0%, radius 100%, rgba(8, 32, 148, 0.9), rgba(255, 255, 255, 0));
+}
+
+#refresh_button:pressed {
+    -fx-background-color: #090a0c,
+    linear-gradient(#353e4b 0%, #212229 20%, #191d22 100%),
+    linear-gradient(#181e2b, #161522),
+    radial-gradient(center 50% 0%, radius 100%, rgba(17, 17, 67, 0.9), rgba(255, 255, 255, 0));
+}

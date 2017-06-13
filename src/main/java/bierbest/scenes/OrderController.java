@@ -60,7 +60,7 @@ public class OrderController {
 
     public void init(ApiBeer apiBeer) {
         this.beerName = apiBeer.getName();
-        if(apiBeer.getLabels() != null) {
+        if (apiBeer.getLabels() != null) {
             this.imageUrl = apiBeer.getLabels().get("icon");
         }
         messageSubject.setText(beerName + " - price");

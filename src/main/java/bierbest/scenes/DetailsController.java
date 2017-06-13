@@ -109,7 +109,7 @@ public class DetailsController {
     }
 
     public void showContextMenu(MouseEvent mouseEvent) {
-        if(contextMenu == null) {
+        if (contextMenu == null) {
             contextMenu = DropdownMenu.getInstance(root);
             username.setContextMenu(contextMenu);
         }

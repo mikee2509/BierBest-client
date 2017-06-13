@@ -1,40 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-
-<BorderPane id="home_background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" stylesheets="@../styles/style_cart.css, @../styles/style_shared.css, @../styles/style_context_menu.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bierbest.scenes.CartController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" id="home_background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="750.0"
+            prefWidth="1200.0"
+            stylesheets="@../styles/style_cart.css, @../styles/style_shared.css, @../styles/style_context_menu.css" xmlns="http://javafx.com/javafx/8"
+            fx:controller="bierbest.scenes.CartController">
     <center>
-        <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <TableView fx:id="ordersTable" BorderPane.alignment="CENTER">
             <columns>
-                <TableColumn prefWidth="215.0" text="Beer" />
-                <TableColumn minWidth="0.0" prefWidth="99.0" text="Quantity" />
-                <TableColumn prefWidth="146.0" text="Price offered" />
-                <TableColumn prefWidth="139.0" text="Order status" />
+                <TableColumn fx:id="beerColumn" maxWidth="450.0" minWidth="400.0" prefWidth="400.0" resizable="false"
+                             text="Beer"/>
+                <TableColumn fx:id="quantityColumn" maxWidth="120.0" minWidth="120.0" prefWidth="120.0"
+                             resizable="false" text="Quantity"/>
+                <TableColumn fx:id="priceColumn" maxWidth="165.0" minWidth="165.0" prefWidth="165.0" resizable="false"
+                             text="Price offered"/>
+                <TableColumn fx:id="statusColumn" maxWidth="170.0" minWidth="170.0" prefWidth="170.0" resizable="false"
+                             text="Order status"/>
+                <TableColumn fx:id="decisionColumn" maxWidth="95.0" minWidth="95.0" prefWidth="95.0" text="Decision"/>
             </columns>
+            <BorderPane.margin>
+                <Insets left="120.0" right="120.0"/>
+            </BorderPane.margin>
         </TableView>
     </center>
     <top>
         <BorderPane BorderPane.alignment="CENTER">
             <left>
-                <ImageView id="back_button" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                <ImageView id="back_button" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#goBack"
+                           pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                     <BorderPane.margin>
-                        <Insets left="25.0" top="25.0" />
+                        <Insets left="25.0" top="25.0"/>
                     </BorderPane.margin>
                 </ImageView>
             </left>
             <right>
                 <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Label id="username_label" fx:id="username" text="Username" />
-                        <ImageView id="context_menu_arrow" fx:id="contextMenuArrow" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#showContextMenu" pickOnBounds="true" preserveRatio="true">
+                        <Label id="username_label" fx:id="username" text="Username"/>
+                        <ImageView id="context_menu_arrow" fx:id="contextMenuArrow" fitHeight="20.0" fitWidth="20.0"
+                                   onMouseClicked="#showContextMenu" pickOnBounds="true" preserveRatio="true">
                             <HBox.margin>
-                                <Insets right="20.0" />
+                                <Insets right="20.0"/>
                             </HBox.margin>
                         </ImageView>
                     </children>
@@ -43,10 +53,22 @@
             <bottom>
                 <Label id="title_label" text="Your orders" BorderPane.alignment="CENTER_LEFT">
                     <BorderPane.margin>
-                        <Insets bottom="20.0" left="120.0" />
+                        <Insets bottom="20.0" left="120.0"/>
                     </BorderPane.margin>
                 </Label>
             </bottom>
         </BorderPane>
     </top>
+    <bottom>
+        <HBox alignment="TOP_RIGHT" spacing="15.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button id="refresh_button" mnemonicParsing="false" onAction="#refresh" text="Refresh"/>
+                <Button id="button" mnemonicParsing="false" onAction="#acceptPrice" text="Accept price"/>
+                <Button id="negative_button" mnemonicParsing="false" onAction="#rejectPrice" text="Reject price"/>
+            </children>
+            <BorderPane.margin>
+                <Insets bottom="50.0" left="120.0" right="120.0" top="50.0"/>
+            </BorderPane.margin>
+        </HBox>
+    </bottom>
 </BorderPane>

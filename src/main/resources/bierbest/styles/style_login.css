@@ -12,6 +12,7 @@
 #login_label {
     -fx-font-size: 20;
 }
+
 #login_label:hover {
     -fx-text-fill: lightgray;
 }

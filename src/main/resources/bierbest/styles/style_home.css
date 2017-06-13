@@ -40,11 +40,9 @@
 /* The increment and decrement button CSS class of scrollbar */
 .scroll-pane .scroll-bar:vertical .increment-button,
 .scroll-pane .scroll-bar:vertical .decrement-button {
-
     -fx-background-color: transparent;
     -fx-background-radius: 0em;
     -fx-padding: 0 13 0 0;
-
 }
 
 .scroll-pane .scroll-bar .increment-arrow,

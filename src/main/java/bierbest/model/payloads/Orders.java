@@ -12,4 +12,8 @@ public class Orders extends Payload implements Serializable {
     public Orders(List<OrderModel> orders) {
         this.orders = orders;
     }
+
+    public List<OrderModel> getOrders() {
+        return orders;
+    }
 }
