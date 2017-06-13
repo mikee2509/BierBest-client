@@ -5,8 +5,13 @@ Aplikacja wspiera proces zamawiania piwa przez sieć. Użytkownik korzystając z
 
 
 
-### Do tej pory zrealizowane
-Aplikacja pozwala wyszukiwać piwa z bazy BreweryDB.com oraz zapisywać zapytania o cenę do pliku orders.txt
+### Zrealizowane
+* logowanie/rejestracja nowego użytkownika
+* wyszukiwanie piw w bazie BreweryDB.com
+* wyświetlanie widoku szczegółowego piwa
+* formularz składania zamówienia z walidacją wprowadzanych danych
+* widok listy zamówień z możliwością sprawdzenia statusu zamówienia, akceptacji/odrzucenia ceny
+* szyfrowana komunikacja z serwerem za pomocą socketów
 
  
  
@@ -20,5 +25,5 @@ Linux:
 Windows:
 
     gradlew.bat jfxJar
-    java -jar ./build/jfx/app/BierBest.jar
+    java -jar build\jfx\app\BierBest.jar
  
